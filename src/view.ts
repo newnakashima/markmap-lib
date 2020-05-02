@@ -249,7 +249,7 @@ ${getStyleContent()}
     nodeExit.attr('transform', d => `translate(${origin.y + origin.ySizeInner - d.ySizeInner},${origin.x + origin.xSize / 2 - d.xSize})`).remove();
 
     const nodeMerge = node.merge(nodeEnter);
-    transition(nodeMerge).attr('transform', d => `translate(${d.y},${d.x - d.xSize / 2})`);
+    transition(nodeMerge).attr('transform', d => `translate(${-d.y},${d.x - d.xSize / 2})`);
 
     const rect = nodeMerge.selectAll(childSelector('rect'))
       .data(d => [d], d => d.data.p.k)
@@ -341,11 +341,11 @@ ${getStyleContent()}
       .attr('stroke-width', d => linkWidth(d.target))
       .attr('d', d => {
         const source: [number, number] = [
-          d.source.y + d.source.ySizeInner,
+          -d.source.y,
           d.source.x + d.source.xSize / 2,
         ];
         const target: [number, number] = [
-          d.target.y,
+          -d.target.y + d.target.ySizeInner,
           d.target.x + d.target.xSize / 2,
         ];
         return linkShape({ source, target });

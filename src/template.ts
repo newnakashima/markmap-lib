@@ -4,7 +4,7 @@ const template: string = process.env.TEMPLATE;
 
 const js: (string | object)[] = [
   { src: 'https://cdn.jsdelivr.net/npm/d3@5' },
-  { src: 'https://cdn.jsdelivr.net/npm/markmap-lib@process.env.VERSION/dist/view.min.js' },
+  { src: '../markmap-lib/dist/view.min.js' },
 ];
 
 function buildCode(fn: Function, ...args: any[]): string {
